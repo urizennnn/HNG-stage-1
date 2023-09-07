@@ -33,7 +33,7 @@ app.get('/api', (req, res) => {
         current_day: currentDay,
         utc_time: utcTime,
         track: track,
-        github_file_url: 'https://github.com/urizennnn/',
+        github_file_url: 'https://github.com/urizennnn/HNG-stage-1',
         github_repo_url: 'https://github.com/urizennnn/HNG-stage-1',
         status_code: Number(200),
     };
