@@ -1,6 +1,9 @@
 const express = require('express');
 const app = express();
 
+app.get('/',(req,res)=>{
+    res.send("Hello")
+})
 // Define a route to handle GET requests
 app.get('/api', (req, res) => {
     // Get query parameters from the request
@@ -20,8 +23,8 @@ app.get('/api', (req, res) => {
         current_day: currentDay,
         utc_time: utcTime,
         track: track,
-        github_file_url: 'https://github.com/urizennnn/repo/blob/main/file_name.ext',
-        github_repo_url: 'https://github.com/username/repo',
+        github_file_url: 'https://github.com/urizennnn/',
+        github_repo_url: 'https://github.com/username/HNG-stage-1',
         status_code: 200,
     };
 
@@ -32,5 +35,5 @@ app.get('/api', (req, res) => {
 // Start the server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+    console.log(`Server is running on port http://localhost:${PORT}`);
 });
