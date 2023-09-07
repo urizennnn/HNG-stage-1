@@ -4,7 +4,7 @@ const PORT = process.env.PORT || 3000;
 
 app.get('/', (req, res) => {
     res.send("Hello")
-    res.redirect('/api')
+    // res.redirect('/api')
 })
 app.get('/api', (req, res) => {
     const slackName = req.query.slack_name;
