@@ -1,39 +1,47 @@
 const express = require('express');
 const app = express();
+const PORT = process.env.PORT || 3000;
 
-app.get('/',(req,res)=>{
+app.get('/', (req, res) => {
     res.send("Hello")
 })
-// Define a route to handle GET requests
 app.get('/api', (req, res) => {
-    // Get query parameters from the request
     const slackName = req.query.slack_name;
     const track = req.query.track;
 
-    // Get the current day of the week
     const currentDay = new Date().toLocaleString('en-US', { weekday: 'long' });
 
-    // Get the current UTC time with validation
-    const now = new Date();
-    const utcTime = now.toISOString();
+    // const now = new Date();
+    const date = new Date();
 
-    // Construct the JSON response
+
+    const year = date.getFullYear();
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const day = date.getDate().toString().padStart(2, '0');
+    const hours = date.getHours().toString().padStart(2, '0');
+    const minutes = date.getMinutes().toString().padStart(2, '0');
+    const seconds = date.getSeconds().toString().padStart(2, '0');
+
+    const formattedDate = `${year}-${month}-${day}T${hours}:${minutes}:${seconds}Z`;
+
+    // console.log(formattedDate);
+
+    const utcTime = formattedDate
+
     const jsonResponse = {
         slack_name: slackName,
         current_day: currentDay,
         utc_time: utcTime,
         track: track,
         github_file_url: 'https://github.com/urizennnn/',
-        github_repo_url: 'https://github.com/username/HNG-stage-1',
-        status_code: 200,
+        github_repo_url: 'https://github.com/urizennnn/HNG-stage-1',
+        status_code: Number(200),
     };
 
-    // Send the JSON response
     res.json(jsonResponse);
 });
 
-// Start the server
-const PORT = process.env.PORT || 3000;
+
 app.listen(PORT, () => {
     console.log(`Server is running on port http://localhost:${PORT}`);
 });
