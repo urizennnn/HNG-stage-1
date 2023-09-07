@@ -43,6 +43,6 @@ app.get('/api', (req, res) => {
 });
 
 
-// app.listen(PORT, () => {
-//     console.log(`Server is running on port http://localhost:${PORT}`);
-// });
+app.listen(PORT, () => {
+    console.log(`Server is running on port http://localhost:${PORT}`);
+});
